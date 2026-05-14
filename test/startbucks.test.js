@@ -78,7 +78,7 @@ describe('Testes para gestao de cafeteria', () => {
         assert.equal(retornoEsperado, 5);
     })
 
-    it('TC 3 - Retornar uma lista vazia', () => {
+    it('TC 4 - Retornar uma lista vazia', () => {
         // Padrao triple A (Arrange, Act, Assert)
         // Arrange > Organizar o teste, criar os objetos, definir as variáveis
         const listaPedidos = [];
