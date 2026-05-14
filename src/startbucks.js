@@ -4,14 +4,14 @@
  * @date 2026-05-13
  */
 
-export function contabilizarQuantidadedeCafe(listaPedidos) {
+export function contabilizarQuantidadedeItems(listaPedidos, itemPesquisado) {
     if (listaPedidos === null || listaPedidos === undefined) {
         throw new Error('Informe a lista de pedidos');
     }
 
     let quantidade = 0;
     for (const pedido of listaPedidos) {
-        if (pedido.nome.toLowerCase() == 'café') {
+        if (pedido.nome.toLowerCase() == itemPesquisado.toLowerCase()) {
             quantidade++;
         }
     }

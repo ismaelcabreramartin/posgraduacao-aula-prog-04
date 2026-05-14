@@ -6,7 +6,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { contabilizarQuantidadedeCafe } from '../src/startbucks.js';
+import { contabilizarQuantidadedeItems } from '../src/startbucks.js';
 
 describe('Testes para gestao de cafeteria', () => {
     it('TC 1 - Ao menos 1 café na lista', () => {
@@ -17,9 +17,9 @@ describe('Testes para gestao de cafeteria', () => {
             { nome: 'bolo de cenoura', valor: 10.00 },
             { nome: 'café com leite', valor: 7.00 }
         ];
-
+        const itemPesquisado = 'café';
         // Act > Executar a ação que queremos testar
-        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+        const retornoEsperado = contabilizarQuantidadedeItems(listaPedidos, itemPesquisado);
 
         // Assert > Verificar se o resultado é o esperado
         assert.equal(retornoEsperado, 1);
@@ -44,8 +44,9 @@ describe('Testes para gestao de cafeteria', () => {
             { nome: 'brownie', valor: 8.50 },
             { nome: 'café coado', valor: 5.50 }
         ];
+        const itemPesquisado = 'café';
         // Act > Executar a ação que queremos testar
-        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+        const retornoEsperado = contabilizarQuantidadedeItems(listaPedidos, itemPesquisado);
 
         // Assert > Verificar se o resultado é o esperado
         assert.equal(retornoEsperado, 0);
@@ -71,8 +72,9 @@ describe('Testes para gestao de cafeteria', () => {
             { nome: 'brownie', valor: 8.50 },
             { nome: 'café coado', valor: 5.50 }
         ];
+        const itemPesquisado = 'café';
         // Act > Executar a ação que queremos testar
-        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+        const retornoEsperado = contabilizarQuantidadedeItems(listaPedidos, itemPesquisado);
 
         // Assert > Verificar se o resultado é o esperado
         assert.equal(retornoEsperado, 5);
@@ -82,8 +84,9 @@ describe('Testes para gestao de cafeteria', () => {
         // Padrao triple A (Arrange, Act, Assert)
         // Arrange > Organizar o teste, criar os objetos, definir as variáveis
         const listaPedidos = [];
+        const itemPesquisado = 'café';  
         // Act > Executar a ação que queremos testar
-        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+        const retornoEsperado = contabilizarQuantidadedeItems(listaPedidos, itemPesquisado);
 
         // Assert > Verificar se o resultado é o esperado
         assert.equal(retornoEsperado, 0);
@@ -93,10 +96,11 @@ describe('Testes para gestao de cafeteria', () => {
         // Padrao triple A (Arrange, Act, Assert)
         // Arrange > Organizar o teste, criar os objetos, definir as variáveis
         const listaPedidos = null;
+        const itemPesquisado = 'café';
 
         // Assert > Verificar se o resultado é o esperado
         assert.throws(
-        function() { contabilizarQuantidadedeCafe(listaPedidos) },
+        function() { contabilizarQuantidadedeItems(listaPedidos, 'café') },
         { message: 'Informe a lista de pedidos' }
         );
     })
@@ -122,11 +126,29 @@ describe('Testes para gestao de cafeteria', () => {
             { nome: 'café coado', valor: 5.50 },
             { nome: 'cafe', valor: 5.50 }
         ];
+        const itemPesquisado = 'café';
         // Act > Executar a ação que queremos testar
-        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+        const retornoEsperado = contabilizarQuantidadedeItems(listaPedidos, itemPesquisado);
 
         // Assert > Verificar se o resultado é o esperado
         assert.equal(retornoEsperado, 5);
+    })
+
+    it('TC 7 - Filtrar por um item de pedidos vazia', () => {
+        // Padrao triple A (Arrange, Act, Assert)
+        // Arrange > Organizar o teste, criar os objetos, definir as variáveis
+        const listaPedidos = [ // aqui eh um array de objetos
+            { nome: 'café', valor: 5.00 },
+            { nome: 'bolo de cenoura', valor: 10.00 },
+            { nome: 'café com leite', valor: 7.00 },
+            { nome: 'café', valor: 5.00 }
+        ];
+        const itemPesquisado = 'bolo de cenoura';
+        // Act > Executar a ação que queremos testar
+        const retornoEsperado = contabilizarQuantidadedeItems(listaPedidos, itemPesquisado);
+
+        // Assert > Verificar se o resultado é o esperado
+        assert.equal(retornoEsperado, 1);
     })
     
 })
