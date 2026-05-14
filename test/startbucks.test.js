@@ -77,4 +77,56 @@ describe('Testes para gestao de cafeteria', () => {
         // Assert > Verificar se o resultado é o esperado
         assert.equal(retornoEsperado, 5);
     })
+
+    it('TC 3 - Retornar uma lista vazia', () => {
+        // Padrao triple A (Arrange, Act, Assert)
+        // Arrange > Organizar o teste, criar os objetos, definir as variáveis
+        const listaPedidos = [];
+        // Act > Executar a ação que queremos testar
+        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+
+        // Assert > Verificar se o resultado é o esperado
+        assert.equal(retornoEsperado, 0);
+    })
+
+    it('TC 5 -Testar café null', () => {
+        // Padrao triple A (Arrange, Act, Assert)
+        // Arrange > Organizar o teste, criar os objetos, definir as variáveis
+        const listaPedidos = null;
+
+        // Assert > Verificar se o resultado é o esperado
+        assert.throws(
+        function() { contabilizarQuantidadedeCafe(listaPedidos) },
+        { message: 'Informe a lista de pedidos' }
+        );
+    })
+
+    it('TC 6 -Testar café com maiúsculas', () => {
+        // Padrao triple A (Arrange, Act, Assert)
+        // Arrange > Organizar o teste, criar os objetos, definir as variáveis
+        const listaPedidos = [ // aqui eh um array de objetos
+            { nome: 'café', valor: 5.00 },
+            { nome: 'bolo de cenoura', valor: 10.00 },
+            { nome: 'CAFÉ', valor: 7.00 },
+            { nome: 'cappuccino', valor: 9.00 },
+            { nome: 'suco de laranja', valor: 8.00 },
+            { nome: 'pão de queijo', valor: 4.50 },
+            { nome: 'croissant', valor: 12.00 },
+            { nome: 'chocolate quente', valor: 9.50 },
+            { nome: 'CaFé', valor: 6.00 },
+            { nome: 'CaFé', valor: 7.50 },
+            { nome: 'CaFé', valor: 10.00 },
+            { nome: 'torrada com manteiga', valor: 6.00 },
+            { nome: 'café com chocolate', valor: 10.50 },
+            { nome: 'brownie', valor: 8.50 },
+            { nome: 'café coado', valor: 5.50 },
+            { nome: 'cafe', valor: 5.50 }
+        ];
+        // Act > Executar a ação que queremos testar
+        const retornoEsperado = contabilizarQuantidadedeCafe(listaPedidos);
+
+        // Assert > Verificar se o resultado é o esperado
+        assert.equal(retornoEsperado, 5);
+    })
+    
 })
