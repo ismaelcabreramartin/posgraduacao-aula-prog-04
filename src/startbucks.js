@@ -5,9 +5,13 @@
  */
 
 export function contabilizarQuantidadedeCafe(listaPedidos) {
+    if (listaPedidos === null || listaPedidos === undefined) {
+        throw new Error('Informe a lista de pedidos');
+    }
+
     let quantidade = 0;
     for (const pedido of listaPedidos) {
-        if (pedido.nome === 'café') {
+        if (pedido.nome.toLowerCase() == 'café') {
             quantidade++;
         }
     }
