@@ -1,16 +1,19 @@
+# ════════════════════════════════════════════════════════
+# CI de Nível 03 - Pipeline com Testes E2E e Relatório
+# Disparo: Manual (workflow_dispatch)
+# ════════════════════════════════════════════════════════
+
 # nome da pipeline
 name: 'Executar 3 disparos'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
-
 on:
   workflow_dispatch:
 
-#tarefas dentro da pipeline = jobs
-
+# tarefas dentro da pipeline = jobs
 jobs:
-  #nome do job
+  # nome do job
   e2e-tests:
     # maquina onde o job vai rodar
     runs-on: ubuntu-latest # (from GitHub-hosted runners)
@@ -26,38 +29,61 @@ jobs:
         with:
           node-version: 24.x
 
-      # instalação do Yarn (comentar quando for usar máquina própria self-hosted))
+      # instalação do Yarn
+      # OBS: na imagem node:XX do Docker o Yarn já vem pré-instalado,
+      # mas em runners ubuntu-latest do GitHub precisa instalar manualmente
       - name: Instalando Yarn
         run: npm install -g yarn
 
-      #   instalação das dependências
+      # instalação das dependências do projeto (lê o package.json)
       - name: Instalando dependências
         run: yarn
 
-      # instalação dos Browsers do Playwright
+      # instalação dos Browsers do Playwright (Chromium, Firefox, WebKit)
+      # usamos "npx" em vez de "yarn playwright install" porque o Yarn
+      # não estava resolvendo o binário corretamente no ambiente do GitHub
+      # Actions, mesmo com o pacote instalado (erro: "Command playwright not found")
       - name: Instalando Browsers do Playwright
         run: npx playwright install --with-deps
 
-      # instalação do report do Playwright
+      # instalação do reporter CTRF do Playwright
+      # gera um arquivo ctrf-report.json com os resultados em formato padronizado
       - name: Instalando ctrf-json-reporter do Playwright
         run: yarn add -D playwright-ctrf-json-reporter
 
       # executar os testes e2e
-      # rodem mesmo se houver testes falhando
+      # "continue-on-error: true" garante que os próximos steps (geração
+      # de relatório) rodem mesmo que algum teste falhe
       - name: Executando testes e2e
         run: npx playwright test
         continue-on-error: true
 
-      # ✅ ACTION DO MARKETPLACE
-      # Gera sumário de testes na aba Summary do GitHub
+      # ⚠️ ACTION DO MARKETPLACE - DESATIVADA (ver observação abaixo)
       # https://github.com/marketplace/actions/publish-ctrf-test-results-report
+      #
+      # MOTIVO DA DESATIVAÇÃO:
+      # Esta action executa o Playwright internamente para coletar os dados
+      # do relatório. Essa segunda execução não encontra os arquivos de teste
+      # no contexto dela, gerando um "Error: No tests found" que aparece
+      # visualmente colado ao final do step anterior na interface do GitHub
+      # (mesmo com "if: always()", o erro não impacta o resultado final do
+      # job, mas gera log confuso e falsa impressão de falha).
+      # Confirmado via teste de isolamento: ao comentar este step, o erro
+      # desaparece completamente — os 7 testes E2E rodam limpos.
+      #
+      # Optamos por manter apenas o relatório HTML nativo do Playwright
+      # (já gerado automaticamente) + upload-artifact abaixo, que cobre
+      # o mesmo objetivo do exercício (disponibilizar relatório de testes).
+      #
       # - name: Publicando relatório de testes
       #   uses: ctrf-io/github-actions-test-reporter@v1
       #   with:
       #     report-path: './ctrf-report.json'
       #   if: always()
 
-      # Salva o relatório HTML como artefato para download
+      # Salva o relatório HTML gerado pelo Playwright como artefato
+      # para download — fica disponível por 7 dias na aba "Artifacts"
+      # da execução da pipeline
       - name: Salvando relatório HTML
         uses: actions/upload-artifact@v4
         with:
