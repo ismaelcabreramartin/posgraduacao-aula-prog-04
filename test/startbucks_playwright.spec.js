@@ -4,8 +4,6 @@
  * @date 2026-05-13
  */
 
-/** ativar push */
-
 import { test, expect } from '@playwright/test';
 import { contabilizarQuantidadedeItems } from '../src/startbucks.js';
 
