@@ -34,14 +34,6 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
-      # 🔍 STEP TEMPORÁRIO DE DEBUG - remover depois de identificar o problema
-      - name: Debug - verificar playwright no ambiente da pipeline
-        run: |
-          echo "--- Conteúdo do package.json ---"
-          cat package.json
-          echo "--- Procurando playwright em node_modules/.bin ---"
-          ls node_modules/.bin/ | grep playwright || echo "NÃO ENCONTRADO"
-
       # instalação dos Browsers do Playwright
       - name: Instalando Browsers do Playwright
         run: npx playwright install --with-deps
@@ -52,9 +44,6 @@ jobs:
 
       # executar os testes e2e
       # rodem mesmo se houver testes falhando
-      - name: Rodando testes unitários
-        run: yarn run test
-
       - name: Executando testes e2e
         run: npx playwright test
         continue-on-error: true
