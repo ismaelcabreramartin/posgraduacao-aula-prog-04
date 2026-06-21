@@ -52,6 +52,9 @@ jobs:
 
       # executar os testes e2e
       # rodem mesmo se houver testes falhando
+      - name: Rodando testes unitários
+        run: yarn run test
+
       - name: Executando testes e2e
         run: npx playwright test
         continue-on-error: true
