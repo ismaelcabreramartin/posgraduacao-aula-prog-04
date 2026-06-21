@@ -34,6 +34,14 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
+      # 🔍 STEP TEMPORÁRIO DE DEBUG - remover depois de identificar o problema
+      - name: Debug - verificar playwright no ambiente da pipeline
+        run: |
+          echo "--- Conteúdo do package.json ---"
+          cat package.json
+          echo "--- Procurando playwright em node_modules/.bin ---"
+          ls node_modules/.bin/ | grep playwright || echo "NÃO ENCONTRADO"
+
       # instalação dos Browsers do Playwright
       - name: Instalando Browsers do Playwright
         run: yarn playwright install
@@ -48,7 +56,7 @@ jobs:
         run: yarn run e2e
         continue-on-error: true
 
-        # ✅ ACTION DO MARKETPLACE
+      # ✅ ACTION DO MARKETPLACE
       # Gera sumário de testes na aba Summary do GitHub
       # https://github.com/marketplace/actions/publish-ctrf-test-results-report
       - name: Publicando relatório de testes
