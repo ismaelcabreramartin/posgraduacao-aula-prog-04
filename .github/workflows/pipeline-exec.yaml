@@ -44,7 +44,7 @@ jobs:
 
       # instalação dos Browsers do Playwright
       - name: Instalando Browsers do Playwright
-        run: yarn playwright install
+        run: npx playwright install --with-deps
 
       # instalação do report do Playwright
       - name: Instalando ctrf-json-reporter do Playwright
@@ -53,7 +53,7 @@ jobs:
       # executar os testes e2e
       # rodem mesmo se houver testes falhando
       - name: Executando testes e2e
-        run: yarn run e2e
+        run: npx playwright test
         continue-on-error: true
 
       # ✅ ACTION DO MARKETPLACE
