@@ -1,10 +1,10 @@
 # ════════════════════════════════════════════════════════
 # CI de Nível 03/04 - Pipeline com Testes E2E e Relatório
-# Disparos: Manual (workflow_dispatch) + Agendado (schedule)
+# Disparos: Manual (workflow_dispatch) + Agendado (schedule) + Push (main)
 # ════════════════════════════════════════════════════════
 
 # nome da pipeline
-name: 'Execução Manual e Agendada'
+name: 'Execução Manual, Agendada e por Push'
 
 # gatilhos / triggers - regras de disparo
 on:
@@ -15,8 +15,12 @@ on:
   schedule:
     # cronograma de execução usando sintaxe cron
     # 1 - minutos, 2 - horas, 3 - dia do mês, 4 - mês, 5 - dia da semana
-    #- cron: '0 0 * * 5' # Executa toda sexta-feira às 00:00 UTC
     - cron: '20 20 * * *' # Executa todos os dias às 17:20 BRT (20:20 UTC)
+
+  # gatilho por evento de push no repositório
+  push:
+    branches:
+      - main
 
 # tarefas dentro da pipeline = jobs
 jobs:
