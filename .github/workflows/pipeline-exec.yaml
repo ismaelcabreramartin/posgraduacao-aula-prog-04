@@ -15,7 +15,8 @@ on:
   schedule:
     # cronograma de execução usando sintaxe cron
     # 1 - minutos, 2 - horas, 3 - dia do mês, 4 - mês, 5 - dia da semana
-    - cron: '0 0 * * 5' # Executa toda sexta-feira às 00:00 UTC
+    #- cron: '0 0 * * 5' # Executa toda sexta-feira às 00:00 UTC
+    - cron: '20 20 * * *' # Executa todos os dias às 17:20 BRT (20:20 UTC)
 
 # tarefas dentro da pipeline = jobs
 jobs:
