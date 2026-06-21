@@ -51,11 +51,11 @@ jobs:
       # ✅ ACTION DO MARKETPLACE
       # Gera sumário de testes na aba Summary do GitHub
       # https://github.com/marketplace/actions/publish-ctrf-test-results-report
-      - name: Publicando relatório de testes
-        uses: ctrf-io/github-actions-test-reporter@v1
-        with:
-          report-path: './ctrf-report.json'
-        if: always() # roda mesmo se os testes falharem
+      # - name: Publicando relatório de testes
+      #   uses: ctrf-io/github-actions-test-reporter@v1
+      #   with:
+      #     report-path: './ctrf-report.json'
+      #   if: always()
 
       # Salva o relatório HTML como artefato para download
       - name: Salvando relatório HTML

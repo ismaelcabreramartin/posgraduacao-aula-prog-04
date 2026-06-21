@@ -1,0 +1,172 @@
+{
+  "reportFormat": "CTRF",
+  "specVersion": "0.0.0",
+  "reportId": "9c00455c-a286-49fc-89c3-03627910b72d",
+  "timestamp": "2026-06-21T20:01:46.742Z",
+  "generatedBy": "playwright-ctrf-json-reporter",
+  "results": {
+    "tool": {
+      "name": "playwright"
+    },
+    "summary": {
+      "tests": 7,
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "start": 1782072106824,
+      "stop": 1782072107886,
+      "suites": 0
+    },
+    "tests": [
+      {
+        "name": "TC 1 - Ao menos 1 café na lista",
+        "status": "passed",
+        "duration": 11,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "TC 2 - Não ter nenhum café na lista",
+        "status": "passed",
+        "duration": 13,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "TC 3 - Ter 2 ou mais",
+        "status": "passed",
+        "duration": 16,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "TC 4 - Retornar uma lista vazia",
+        "status": "passed",
+        "duration": 15,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "TC 5 - Testar café null",
+        "status": "passed",
+        "duration": 14,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "TC 6 - Testar café com maiúsculas",
+        "status": "passed",
+        "duration": 4,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "TC 7 - Filtrar por um item de pedidos vazia",
+        "status": "passed",
+        "duration": 5,
+        "start": 1782072107,
+        "stop": 1782072107,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Ismael\\projetos\\posgraduacao-aula-prog-04\\test\\startbucks_playwright.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "startbucks_playwright.spec.js > Testes para gestao de cafeteria",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      }
+    ]
+  }
+}
